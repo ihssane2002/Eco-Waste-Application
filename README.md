@@ -1,4 +1,13 @@
 # Eco Waste Application
+Description :
+Le projet Eco Waste Application vise à concevoir une application de gestion des déchets permettant aux utilisateurs de suivre leurs pratiques de recyclage et d’adopter des comportements écoresponsables.
+Fonctionnalités principales :
+
+Enregistrement et suivi des déchets.
+Cartographie des points de recyclage.
+Notifications de rappel pour encourager le tri et le recyclage.
+Gamification pour motiver les utilisateurs.
+L’objectif est de fournir une expérience utilisateur fluide et engageante, adaptée aussi bien aux débutants qu’aux utilisateurs avancés.
 
 ## A web application for managing and tracking eco-friendly waste collection.
 # for waste management
