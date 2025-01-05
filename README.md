@@ -68,23 +68,23 @@
 
 Prerequisites
 
-1. Docker installed on your machine (Get Docker)
+**Docker installed on your machine (Get Docker)**
 
-2. Running the Application
+**Running the Application**
 
-**Pull the Docker image**:
+1. Pull the Docker image:
 
-- ydocker pull saharbenrejab0/ecowaste:latest
+- docker pull saharbenrejab0/ecowaste:latest
 
-**Create a volume for database persistence**:
+2. Create a volume for database persistence:
 
 - docker volume create flask-db-data
 
-**Run the container**:
+3. Run the container:
 
 - docker run -d -p 5000:5000 -v flask-db-data:/app/instance --name eco-waste saharbenrejab0/ecowaste
 
-**Access the application**:
+4. Access the application:
 
 - Open your web browser
 Go to http://localhost:5000
