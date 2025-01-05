@@ -48,15 +48,14 @@
                 <div class="card-body">
                     <h3><i class="fas fa-cloud-sun"></i> Conditions Météorologiques</h3>
                     <div class="weather-container">
-                        <img id="weather-icon" src="" alt="Weather icon" class="weather-icon">
                         <div class="weather-info">
                             <div>
                                 <i class="fas fa-tint"></i>
-                                <p>Humidité: <span id="humidity">%</span></p>
+                                <p>Humidité: <span id="humidity">11%</span></p>
                             </div>
                             <div>
                                 <i class="fas fa-wind"></i>
-                                <p>Vent: <span id="wind-speed">km/h</span></p>
+                                <p>Vent: <span id="wind-speed">9km/h</span></p>
                             </div>
                         </div>
                     </div>
@@ -73,15 +72,15 @@
                             <div class="row text-center">
                                 <div class="col-4">
                                     <p>PM2.5</p>
-                                    <h5 id="pm25-value">-</h5>
+                                    <h5 id="pm25-value">7</h5>
                                 </div>
                                 <div class="col-4">
                                     <p>PM10</p>
-                                    <h5 id="pm10-value">-</h5>
+                                    <h5 id="pm10-value">46.3</h5>
                                 </div>
                                 <div class="col-4">
                                     <p>NO₂</p>
-                                    <h5 id="no2-value">-</h5>
+                                    <h5 id="no2-value">74.1</h5>
                                 </div>
                             </div>
                         </div>
@@ -159,51 +158,75 @@
 <script>
 // Waste Statistics Chart
 const ctx = document.getElementById('wasteChart').getContext('2d');
+
+// Generate random numbers between 50 and 200 for demonstration
+const organicWaste = Math.floor(Math.random() * (200 - 50) + 50);
+const inorganicWaste = Math.floor(Math.random() * (200 - 50) + 50);
+
 new Chart(ctx, {
     type: 'bar',
     data: {
         labels: ['Déchets organiques', 'Déchets inorganiques'],
         datasets: [{
             label: 'Quantité (kg)',
-            data: [{{ organic_waste }}, {{ inorganic_waste }}],
-            backgroundColor: ['#2ecc71', '#e74c3c']
+            data: [organicWaste, inorganicWaste],
+            backgroundColor: ['#2ecc71', '#e74c3c'],
+            borderWidth: 1,
+            borderRadius: 5
         }]
     },
     options: {
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top'
+            }
+        },
         scales: {
             y: {
                 beginAtZero: true,
                 title: {
                     display: true,
-                    text: 'Kilogrammes (kg)'
+                    text: 'Kilogrammes (kg)',
+                    font: {
+                        size: 14
+                    }
+                },
+                grid: {
+                    color: 'rgba(0, 0, 0, 0.1)'
+                }
+            },
+            x: {
+                grid: {
+                    display: false
                 }
             }
         }
     }
 });
 
-// Weather and Air Quality Updates
-function updateEnvironmentalData() {
-    fetch('/api/environmental-data')
-        .then(response => response.json())
-        .then(data => {
-            if (data.weather) {
-                const iconCode = data.weather.icon;
-                document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-                document.getElementById('humidity').textContent = `${data.weather.humidity}`;
-                document.getElementById('wind-speed').textContent = `${data.weather.wind_speed}`;
-            }
+// // Weather and Air Quality Updates
+// function updateEnvironmentalData() {
+//     fetch('/api/environmental-data')
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data.weather) {
+//                 const iconCode = data.weather.icon;
+//                 document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+//                 document.getElementById('humidity').textContent = `${data.weather.humidity}`;
+//                 document.getElementById('wind-speed').textContent = `${data.weather.wind_speed}`;
+//             }
 
-            if (data.air_quality) {
-                document.getElementById('pm25-value').textContent = `${data.air_quality.components['PM2.5']} μg/m³`;
-                document.getElementById('pm10-value').textContent = `${data.air_quality.components['PM10']} μg/m³`;
-                document.getElementById('no2-value').textContent = `${data.air_quality.components['NO2']} μg/m³`;
-            }
-        })
-        .catch(error => console.error('Error:', error));
-}
+//             if (data.air_quality) {
+//                 document.getElementById('pm25-value').textContent = `${data.air_quality.components['PM2.5']} μg/m³`;
+//                 document.getElementById('pm10-value').textContent = `${data.air_quality.components['PM10']} μg/m³`;
+//                 document.getElementById('no2-value').textContent = `${data.air_quality.components['NO2']} μg/m³`;
+//             }
+//         })
+//         .catch(error => console.error('Error:', error));
+// }
 
 // Initialize map
 const map = L.map('map').setView([{{ map_center.lat }}, {{ map_center.lng }}], 13);
@@ -226,15 +249,18 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // Initialize calendar
 $(document).ready(function() {
     $(".datepicker").datepicker({
-        dateFormat: 'dd/mm/yy',
-        firstDay: 1,
-        monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-        dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
-        dayNamesMin: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-        onSelect: function(dateText) {
-            const date = new Date(dateText.split('/').reverse().join('/'));
-            const options = { day: 'numeric', month: 'long', year: 'numeric' };
-            $('#selected-date').text(date.toLocaleDateString('fr-FR', options));
+    dateFormat: 'dd/mm/yy',
+    firstDay: 1,
+    monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+    dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+    dayNamesMin: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+    dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+    showOtherMonths: true,
+    selectOtherMonths: true,
+    onSelect: function(dateText) {
+        const date = new Date(dateText.split('/').reverse().join('/'));
+        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+        $('#selected-date').text(date.toLocaleDateString('fr-FR', options));
         }
     });
 

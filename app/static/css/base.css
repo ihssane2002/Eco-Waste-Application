@@ -1,0 +1,255 @@
+body {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.container.mt-4 {
+    padding: 0;
+    margin-top: 0 !important; /* Supprime la marge du haut */
+}
+
+
+/* Navbar Styles */
+.navbar {
+    width: 100%;
+    background-color: #2ecc71 !important;
+    padding: 1rem 0;
+    margin: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white !important;
+}
+
+.navbar-dark .navbar-nav {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #fff !important;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* Footer */
+.eco-footer {
+    width: 100%;
+    background-color: #2ecc71;
+    color: white;
+    padding: 2rem 0;
+    margin: 0;
+    margin-top: auto;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.eco-footer .container {
+    padding: 0 15px;
+}
+
+.eco-footer h5 {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.eco-footer p,
+.eco-footer ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+.eco-footer li {
+    margin-bottom: 0.5rem;
+}
+
+.eco-footer a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.eco-footer a:hover {
+    color: white;
+    transform: translateX(5px);
+}
+
+.eco-footer i {
+    margin-right: 0.5rem;
+    width: 20px;
+    text-align: center;
+}
+
+
+/* article.html css */
+/* Article Layout */
+.article-container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Article Header */
+.article-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.article-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.article-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.article-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.article-meta i {
+    color: #2ecc71;
+}
+
+/* Article Hero Image */
+.article-hero {
+    margin: 2rem -1.5rem;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.article-hero img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+/* Article Content */
+.article-body {
+    margin-top: 3rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #2c3e50;
+}
+
+.article-content {
+    margin-bottom: 3rem;
+}
+
+.article-content p {
+    margin-bottom: 1.5rem;
+}
+
+.article-content h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin: 2.5rem 0 1.5rem;
+    font-weight: 600;
+}
+
+.article-content h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin: 2rem 0 1.2rem;
+    font-weight: 600;
+}
+
+.article-content ul, 
+.article-content ol {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+}
+
+.article-content li {
+    margin-bottom: 0.75rem;
+}
+
+.article-content a {
+    color: #2ecc71;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.article-content a:hover {
+    border-bottom-color: #2ecc71;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .article-container {
+        margin: 2rem auto;
+    }
+
+    .article-title {
+        font-size: 2rem;
+    }
+
+    .article-meta {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+    }
+
+    .article-body {
+        font-size: 1rem;
+    }
+
+    .article-hero {
+        margin: 1.5rem -1rem;
+    }
+}
+
+
+
+
+
+

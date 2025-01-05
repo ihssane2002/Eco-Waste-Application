@@ -3,18 +3,32 @@
 
 {% block content %}
 <div class="article-container">
-    <h1>{{ article.titre }}</h1>
-    {% if article.image_url %}
-    <img src="{{ url_for('static', filename=article.image_url) }}" alt="{{ article.titre }}" class="img-fluid mb-3">
-    {% endif %}
-    <div class="article-content">
-        {{ article.contenu | safe }}
+    <div class="article-header">
+        <h1 class="article-title">{{ article.titre }}</h1>
+        <div class="article-meta">
+            <span class="publish-date">
+                <i class="far fa-calendar-alt"></i>
+                {{ article.date_publication.strftime('%d %B %Y') }}
+            </span>
+            {% if article.source %}
+            <span class="article-source">
+                <i class="fas fa-link"></i>
+                {{ article.source }}
+            </span>
+            {% endif %}
+        </div>
     </div>
-    <div class="article-meta">
-        <small>Publié le {{ article.date_publication.strftime('%d/%m/%Y') }}</small>
-        {% if article.source %}
-        <small>Source: {{ article.source }}</small>
-        {% endif %}
+
+    {% if article.image_url %}
+    <div class="article-hero">
+        <img src="{{ url_for('static', filename=article.image_url) }}" alt="{{ article.titre }}" class="img-fluid">
+    </div>
+    {% endif %}
+
+    <div class="article-body">
+        <div class="article-content">
+            {{ article.contenu | safe }}
+        </div>
     </div>
 </div>
 {% endblock %}
