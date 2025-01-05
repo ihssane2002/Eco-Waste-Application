@@ -1,7 +1,7 @@
 # Eco Waste Application
 
 ## A web application for managing and tracking eco-friendly waste collection.
-
+# for waste management
 # Option 1
 ## Installation
 
