@@ -8,7 +8,7 @@ Enregistrement et suivi des déchets.
 Cartographie des points de recyclage.
 Notifications de rappel pour encourager le tri et le recyclage.
 Gamification pour motiver les utilisateurs.
-L’objectif est de fournir une expérience utilisateur fluide et engageante, adaptée aussi bien aux débutants qu’aux utilisateurs avancés.
+L’objectif est de fournir une expérience utilisateur fluide, engageante et personnalisée, adaptée aussi bien aux novices qu’aux utilisateurs confirmés. Grâce à cette application, chacun peut contribuer à la préservation de l’environnement tout en s’amusant et en apprenant au quotidien.
 
 ## A web application for managing and tracking eco-friendly waste collection.
 # for waste management
