@@ -101,3 +101,5 @@ Go to http://localhost:5000
 
 # Running tests
 - python -m unittest tests.py
+# Integration de frontend 
+-  Ce projet frontend est conçu pour être intégré avec l'application backend développée avec Flask, permettant une gestion centralisée et offre une interface utilisateur sophistiqué. Cette combinaison assurera une application full-stack fonctionnelle,Ce code est intégré dans le branch integration-frontend 
